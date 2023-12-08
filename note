@@ -1,0 +1,4 @@
+https://flutter.cn/community/tutorials/flutter-state-management-with-mobx
+
+$ flutter packages pub run build_runner watch
+
