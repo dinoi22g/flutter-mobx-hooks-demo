@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends HookWidget{
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
   
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,24 @@ class MyHomePage extends HookWidget{
 
     useEffect((){
       counter.fetch();
-      return;
+
+      // 只要執行任一action method就會觸發
+      // autorun((_){
+      //   print('x = ${counter.count}');
+      // });
+
+      // 類似autorun, 但可以傳值並設定
+      // reaction((_) {
+      //   counter.count = 12;
+      //   return counter.count;
+      // }, (_) {
+      //   print('Counter changed to ${counter.count}');
+      // });
+
+      // 當count>20時觸發條件
+      counter.asyncCountLt20();
+
+      return null;
     },const []);
     
     return Scaffold(

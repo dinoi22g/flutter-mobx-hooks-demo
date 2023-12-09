@@ -9,8 +9,15 @@ abstract class CounterBase with Store {
   @observable
   int count = 0;
 
-  @action fetch() {
+  @action
+  void fetch() {
     count = 10;
+  }
+
+  // 當數字>20時繼續執行下方print
+  void asyncCountLt20() async{
+    await asyncWhen((_) => count > 20);
+    print('Count>20');
   }
 
   @action
@@ -22,4 +29,5 @@ abstract class CounterBase with Store {
   void decrement() {
     count--;
   }
+
 }
